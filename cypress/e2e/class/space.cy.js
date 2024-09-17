@@ -13,10 +13,10 @@ class Space {
     }
 
     changeViewSpace(option) {
-        cy.get('button[aria-label="Más opciones"]').click();
+        cy.get('button[aria-label="Más opciones"]').click({ force: true });
         cy.contains('wrike-text-card-v2', option)
             .parents('wrike-list-v2-item')
-            .click();
+            .click({ force: true });
 
     }
 
@@ -31,7 +31,7 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
     editNewSpaceNameVoid() {
@@ -41,7 +41,7 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
     editNewSpaceTypeProject(typeProject) {
@@ -52,7 +52,7 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
     editNewSpaceTypeProjectVoid() {
@@ -62,7 +62,7 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
     editNewSpaceTypeTask(typeTask) {
@@ -73,7 +73,7 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
     editNewSpaceTypeTaskVoid() {
@@ -83,10 +83,10 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
-    editNewSpaceCancel(typeProject, typeTask){
+    editNewSpaceCancel(typeProject, typeTask) {
         this.#goToSettingsSpace();
         cy.get('input[placeholder="Nombre del tipo de proyecto"]')
             .clear()
@@ -97,7 +97,7 @@ class Space {
         cy.contains('button', 'Cancelar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
     deleteSpace() {
@@ -133,7 +133,7 @@ class Space {
             .click();
     }
 
-    createTaskCancel(projectName, taskName){
+    createTaskCancel(projectName, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click();
@@ -158,38 +158,38 @@ class Space {
             .parents('folder-tree-node')
             .click();
         cy.contains('Task one').click()
-        cy.contains('span.status-button__text','Nuevo').click();
+        cy.contains('span.status-button__text', 'Nuevo').click();
         cy.contains('Planificado').click();
     }
 
-    editTaskInCourse(projectName){
+    editTaskInCourse(projectName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click();
         cy.contains('Task one').click()
-        cy.contains('span.status-button__text','Nuevo').click();
+        cy.contains('span.status-button__text', 'Nuevo').click();
         cy.contains('En curso').click();
     }
 
-    editTaskInRevision(projectName){
+    editTaskInRevision(projectName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click();
         cy.contains('Task one').click()
-        cy.contains('span.status-button__text','Nuevo').click();
+        cy.contains('span.status-button__text', 'Nuevo').click();
         cy.contains('En revisión').click();
     }
 
-    editTaskCompleted(projectName){
+    editTaskCompleted(projectName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click();
         cy.contains('Task one').click()
-        cy.contains('span.status-button__text','Nuevo').click();
+        cy.contains('span.status-button__text', 'Nuevo').click();
         cy.contains('Completado').click();
     }
 
-    editTaskLevelA(projectName){
+    editTaskLevelA(projectName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click();
@@ -209,10 +209,10 @@ class Space {
         cy.contains(importance).click()
     }
 
-    #goToSettingsSpace () {
+    #goToSettingsSpace() {
         cy.contains('span', 'Ajustes del espacio')
-            .parents('sidebar-item')
-            .click();
+            //.parents('sidebar-item')
+            .click({ force: true });
     }
 }
 

@@ -55,7 +55,7 @@ class Space {
             .click({ force: true });
         cy.contains('button', 'Widget')
             .click();
-        cy.contains('Recuento de projectos')
+        cy.contains('Recuento de proyectos')
             .click();
     }
 

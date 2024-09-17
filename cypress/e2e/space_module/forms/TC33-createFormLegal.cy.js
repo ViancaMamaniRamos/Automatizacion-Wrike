@@ -7,9 +7,9 @@ setup_before_each();
 setup_after_each();
 setup_after_all();
 
-describe('Edit Space', () => {
+describe('Formularios legales', () => {
 
-    it('Edit Space', () => {
+    it('TC33-Verificar la creacion de un formulario legal', () => {
         cy.viewport(1280, 720);
 
         const form = new Form();

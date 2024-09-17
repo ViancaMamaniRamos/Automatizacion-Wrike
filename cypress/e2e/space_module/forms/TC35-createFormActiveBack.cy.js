@@ -13,6 +13,6 @@ describe('Edit Space', () => {
         cy.viewport(1280, 720);
 
         const form = new Form();
-        form.createFormActiveBack('Sprint 1', ' ');
+        form.createFormActiveBack('Manterial de escritorio');
     })
 })

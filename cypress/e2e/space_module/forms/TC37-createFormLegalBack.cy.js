@@ -7,12 +7,12 @@ setup_before_each();
 setup_after_each();
 setup_after_all();
 
-describe('Edit Space', () => {
+describe('Formularios legales', () => {
 
-    it('Edit Space', () => {
+    it('Verificar vuelta a la lista sin que crear el formulario', () => {
         cy.viewport(1280, 720);
 
         const form = new Form();
-        form.createFormLegalBack('Sprint 1', ' ');
+        form.createFormLegalBack('Ventas');
     })
 })
