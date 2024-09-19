@@ -9,10 +9,14 @@ setup_after_all();
 
 describe('Change View Space', () => {
 
-    it('Change view space', () => {
+    it('Verificar cambio a todos los espacios', () => {
         cy.viewport(1280, 720);
-        const space = new Space()
+        const space = new Space();
         space.changeViewSpace(OptionViewSpace.TODOS_MIS_ESPACIOS);
+    })
+    it('Verificar cambio a solo el espacio seleccionado', () => {
+        cy.viewport(1280, 720);
+        const space = new Space();
         space.changeViewSpace(OptionViewSpace.SOLO_ESPACIO_SELECCIONADO);
     })
 })

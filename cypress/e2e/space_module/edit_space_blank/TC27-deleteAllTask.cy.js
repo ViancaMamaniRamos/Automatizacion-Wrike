@@ -7,12 +7,12 @@ setup_before_each();
 setup_after_each();
 setup_after_all();
 
-describe('Delete Space', () => {
+describe('Eliminar Tareas', () => {
 
-    it('Delete Space', () => {
+    it('Verificar la eliminacion de tareas', () => {
         cy.viewport(1280, 720);
 
         const space = new Space();
-        space.editTaskLevelA('Sprint 1')
+        space.deleteAllTasks('Sprint 1')
     })
 })

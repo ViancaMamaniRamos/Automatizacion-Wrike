@@ -13,6 +13,6 @@ describe('Delete Space', () => {
         cy.viewport(1280, 720);
 
         const space = new Space();
-        space.editTaskImportance('Sprint 1','Baja')
+        space.editTaskImportance('Sprint 1','Baja','Task nine')
     })
 })

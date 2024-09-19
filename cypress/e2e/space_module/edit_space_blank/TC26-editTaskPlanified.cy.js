@@ -7,12 +7,12 @@ setup_before_each();
 setup_after_each();
 setup_after_all();
 
-describe('Delete Space', () => {
+describe('Editar tarea', () => {
 
-    it('Delete Space', () => {
+    it('Verificar editar tarea a estado de planificado', () => {
         cy.viewport(1280, 720);
 
         const space = new Space();
-        space.editTaskPlanified("Sprint 1")
+        space.editTaskPlanified("Sprint 1",'Task two')
     })
 })
