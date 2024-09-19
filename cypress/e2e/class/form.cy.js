@@ -27,7 +27,7 @@ class Form {
     createFormActive(projectName, active) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         cy.wait(2000);
         cy.get('button[aria-label="Crear nuevo"]')
             .click();
@@ -42,7 +42,7 @@ class Form {
     createFormRequisitosTI(projectName, optionOffice) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         cy.wait(2000);
         cy.get('button[aria-label="Crear nuevo"]')
             .click();
@@ -81,7 +81,7 @@ class Form {
     createFormLegal(projectName, optionOffice) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         cy.wait(2000);
         cy.get('button[aria-label="Crear nuevo"]')
             .click();

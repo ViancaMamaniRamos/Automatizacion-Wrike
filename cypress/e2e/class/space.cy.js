@@ -148,7 +148,7 @@ class Space {
     createTask(projectName, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         cy.get('button[aria-label="Crear nuevo"]')
             .click();
         cy.contains('span.template-card__info-main', 'Tarea')
@@ -164,7 +164,7 @@ class Space {
     createTaskVoid(projectName, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         cy.get('button[aria-label="Crear nuevo"]')
             .click();
         cy.contains('span.template-card__info-main', 'Tarea')
@@ -176,7 +176,7 @@ class Space {
     createTaskCancel(projectName, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         cy.get('button[aria-label="Crear nuevo"]')
             .click();
         cy.get('.template-card__content .template-card__info-main span')
@@ -188,7 +188,7 @@ class Space {
     editTask(projectName,taskCreate , taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         this.#createTaskForEdit(taskCreate);
         cy.contains(taskCreate).first().click()
         cy.get('textarea[aria-label="Título del elemento, Task one"]').clear().type(taskName);
@@ -197,7 +197,7 @@ class Space {
     editTaskPlanified(projectName, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
         cy.contains('span.status-button__text', 'Nueva').click();
@@ -207,7 +207,7 @@ class Space {
     editTaskInCourse(projectName, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
         cy.contains('span.status-button__text', 'Nueva').click();
@@ -217,7 +217,7 @@ class Space {
     editTaskInRevision(projectName, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
         cy.contains('span.status-button__text', 'Nueva').click();
@@ -227,7 +227,7 @@ class Space {
     editTaskCompleted(projectName, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
         cy.contains('span.status-button__text', 'Nueva').click();
@@ -237,7 +237,7 @@ class Space {
     deleteAllTasks(projectName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         cy.get('input[aria-label="Seleccionar todos los elementos de la tabla"]').check();
         cy.get('button[aria-label="Eliminar"]').click();
     }
@@ -245,7 +245,7 @@ class Space {
     editTaskImportance(projectName, importance, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
         cy.get('button[aria-label="Mostrar más campos"]').click()
