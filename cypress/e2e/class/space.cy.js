@@ -162,6 +162,8 @@ class Space {
     }
 
     createTaskVoid(projectName, taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click({force:true});
@@ -174,6 +176,8 @@ class Space {
     }
 
     createTaskCancel(projectName, taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click({force:true});
@@ -186,6 +190,8 @@ class Space {
     }
 
     editTask(projectName,taskCreate , taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click({force:true});
@@ -195,6 +201,8 @@ class Space {
     }
 
     editTaskPlanified(projectName, taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click({force:true});
@@ -205,6 +213,8 @@ class Space {
     }
 
     editTaskInCourse(projectName, taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click({force:true});
@@ -215,6 +225,8 @@ class Space {
     }
 
     editTaskInRevision(projectName, taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click({force:true});
@@ -225,6 +237,8 @@ class Space {
     }
 
     editTaskCompleted(projectName, taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click({force:true});
@@ -235,6 +249,8 @@ class Space {
     }
 
     deleteAllTasks(projectName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click({force:true});
@@ -243,6 +259,8 @@ class Space {
     }
 
     editTaskImportance(projectName, importance, taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click({force:true});
