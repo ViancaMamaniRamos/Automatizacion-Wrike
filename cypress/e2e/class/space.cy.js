@@ -64,7 +64,7 @@ class Space {
         this.#goToSettingsSpace();
         cy.get('input[placeholder="Nombre del tipo de proyecto"]')
             .clear()
-            .type('Tarea');
+            .type('Proyecto');
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')

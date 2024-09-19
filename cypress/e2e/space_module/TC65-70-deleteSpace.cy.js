@@ -13,10 +13,10 @@ describe('Eliminar espacios', () => {
         const space = new Space();
         
         space.deleteSpace('Nuevo espacio');
-        cy.wait(3000)
     })
     it('Verificar eliminado de proyectos', () => {
         cy.viewport(1280, 720);
+        cy.wait(3000)
         const space = new Space();
         
         space.deleteSpace('Proyectos');
