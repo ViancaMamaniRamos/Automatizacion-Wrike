@@ -13,6 +13,6 @@ describe('Editar tarea', () => {
         cy.viewport(1280, 720);
 
         const space = new Space();
-        space.editTaskInCourse("Sprint 1",'Task four')
+        space.editTaskInCourse('Task four')
     })
 })

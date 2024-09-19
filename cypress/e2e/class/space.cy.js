@@ -195,56 +195,49 @@ class Space {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click({force:true});
+        cy.wait(3000)
         this.#createTaskForEdit(taskCreate);
         cy.contains(taskCreate).first().click()
         cy.get('textarea[aria-label="Título del elemento, Task one"]').clear().type(taskName);
     }
 
-    editTaskPlanified(projectName, taskName) {
+    editTaskPlanified(taskName) {
         cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
         cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
-        cy.contains('span.tree-item-name__button-text', projectName)
-            .parents('folder-tree-node')
-            .click({force:true});
+        cy.wait(3000)
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
-        cy.contains('span.status-button__text', 'Nueva').click();
+        cy.contains('span.status-button__text', 'Nuevo').click();
         cy.contains('Planificado').click();
     }
 
-    editTaskInCourse(projectName, taskName) {
+    editTaskInCourse(taskName) {
         cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
         cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
-        cy.contains('span.tree-item-name__button-text', projectName)
-            .parents('folder-tree-node')
-            .click({force:true});
+        cy.wait(3000)
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
-        cy.contains('span.status-button__text', 'Nueva').click();
+        cy.contains('span.status-button__text', 'Nuevo').click();
         cy.contains('En curso').click();
     }
 
-    editTaskInRevision(projectName, taskName) {
+    editTaskInRevision(taskName) {
         cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
         cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
-        cy.contains('span.tree-item-name__button-text', projectName)
-            .parents('folder-tree-node')
-            .click({force:true});
+        cy.wait(3000)
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
-        cy.contains('span.status-button__text', 'Nueva').click();
+        cy.contains('span.status-button__text', 'Nuevo').click();
         cy.contains('En revisión').click();
     }
 
-    editTaskCompleted(projectName, taskName) {
+    editTaskCompleted(taskName) {
         cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
         cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
-        cy.contains('span.tree-item-name__button-text', projectName)
-            .parents('folder-tree-node')
-            .click({force:true});
+        cy.wait(3000)
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
-        cy.contains('span.status-button__text', 'Nueva').click();
+        cy.contains('span.status-button__text', 'Nuevo').click();
         cy.contains('Completado').click();
     }
 
