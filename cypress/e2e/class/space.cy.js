@@ -127,7 +127,7 @@ class Space {
 
     deleteSpace(nameSpace) {
         cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
-        cy.contains('a.context-selector-menu-item__link', nameSpace).first().click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', nameSpace).click({ force: true });
         cy.wait(3000)
         this.#goToSettingsSpace();
         cy.contains('button', 'Eliminar espacio')
