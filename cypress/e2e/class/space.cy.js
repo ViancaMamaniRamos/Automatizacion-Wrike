@@ -185,11 +185,12 @@ class Space {
         cy.contains('button', 'Cancelar').click();
     }
 
-    editTask(projectName, taskName) {
+    editTask(projectName,taskCreate , taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click();
-        cy.contains('Task one').first().click()
+        this.#createTaskForEdit(taskCreate);
+        cy.contains(taskCreate).first().click()
         cy.get('textarea[aria-label="Título del elemento, Task one"]').clear().type(taskName);
     }
 
