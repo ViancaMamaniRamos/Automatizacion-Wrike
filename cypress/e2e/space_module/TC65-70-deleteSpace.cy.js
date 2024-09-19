@@ -16,7 +16,7 @@ describe('Eliminar espacios', () => {
     })
     it('Verificar eliminado de proyectos', () => {
         cy.viewport(1280, 720);
-        cy.wait(3000)
+        
         const space = new Space();
         
         space.deleteSpace('Proyectos');
