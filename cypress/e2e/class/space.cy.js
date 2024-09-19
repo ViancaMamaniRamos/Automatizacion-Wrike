@@ -4,8 +4,8 @@ class Space {
     }
 
     createNewSpace(spaceOption) {
-        cy.get('button[data-onboarding="sidebar-context-switcher"]').click();
-        cy.contains('a.context-selector-menu-item__link', 'Espacio').click();
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({force:true});
+        cy.contains('a.context-selector-menu-item__link', 'Espacio').click({force:true});
         cy.contains('h4.template-item__title', spaceOption)
             .parents('template-item')
             .find('button.template-item__preview-button')
@@ -32,6 +32,14 @@ class Space {
             .click();
         cy.get('button[aria-label="Cerrar"]')
             .last().click();
+        this.#goToSettingsSpace();
+        cy.get('input[placeholder="Introduce el nombre del espacio"]')
+            .clear()
+            .type('Automation');
+        cy.contains('button', 'Guardar')
+            .click();
+        cy.get('button[aria-label="Cerrar"]')
+            .last().click();
     }
 
     editNewSpaceNameVoid() {
@@ -53,6 +61,14 @@ class Space {
             .click();
         cy.get('button[aria-label="Cerrar"]')
             .last().click();
+        this.#goToSettingsSpace();
+        cy.get('input[placeholder="Nombre del tipo de proyecto"]')
+            .clear()
+            .type('Tarea');
+        cy.contains('button', 'Guardar')
+            .click();
+        cy.get('button[aria-label="Cerrar"]')
+            .last().click();
     }
 
     editNewSpaceTypeProjectVoid() {
@@ -70,6 +86,15 @@ class Space {
         cy.get('input[placeholder="Nombre del tipo de tarea"]')
             .clear()
             .type(typeTask);
+        cy.contains('button', 'Guardar')
+            .click();
+        cy.get('button[aria-label="Cerrar"]')
+            .last().click();
+        cy.wait(2000)
+        this.#goToSettingsSpace();
+        cy.get('input[placeholder="Nombre del tipo de tarea"]')
+            .clear()
+            .type('Tarea');
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
@@ -100,7 +125,10 @@ class Space {
             .last().click();
     }
 
-    deleteSpace() {
+    deleteSpace(nameSpace) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({force:true});
+        cy.contains('a.context-selector-menu-item__link', nameSpace).first().click({force:true});
+        cy.wait(3000)
         this.#goToSettingsSpace();
         cy.contains('button', 'Eliminar espacio')
             .click();
@@ -133,7 +161,7 @@ class Space {
             .click();
     }
 
-    createTaskCancel(projectName, taskName) {
+    createTaskVoid(projectName, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
             .click();
@@ -141,6 +169,18 @@ class Space {
             .click();
         cy.contains('span.template-card__info-main', 'Tarea')
             .click();
+        cy.get('input[data-tsid="text-input"]').type(taskName);
+        cy.contains('button', 'Añadir y abrir').click();
+    }
+
+    createTaskCancel(projectName, taskName) {
+        cy.contains('span.tree-item-name__button-text', projectName)
+            .parents('folder-tree-node')
+            .click();
+        cy.get('button[aria-label="Crear nuevo"]')
+            .click();
+        cy.get('.template-card__content .template-card__info-main span')
+            .first().click();
         cy.get('input[data-tsid="text-input"]').type(taskName);
         cy.contains('button', 'Cancelar').click();
     }

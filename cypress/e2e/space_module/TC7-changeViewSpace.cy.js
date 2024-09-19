@@ -13,5 +13,6 @@ describe('Change View Space', () => {
         cy.viewport(1280, 720);
         const space = new Space()
         space.changeViewSpace(OptionViewSpace.TODOS_MIS_ESPACIOS);
+        space.changeViewSpace(OptionViewSpace.SOLO_ESPACIO_SELECCIONADO);
     })
 })

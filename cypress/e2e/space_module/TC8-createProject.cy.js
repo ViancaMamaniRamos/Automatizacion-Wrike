@@ -7,13 +7,12 @@ setup_before_each();
 setup_after_each();
 setup_after_all();
 
-describe('Delete Space', () => {
+describe('Crear proyecto', () => {
 
-    it('Delete Space', () => {
+    it('Verificar que se puede crear un proyecto', () => {
         cy.viewport(1280, 720);
 
         const space = new Space();
-        space.changeViewSpace(OptionViewSpace.SOLO_ESPACIO_SELECCIONADO);
-        space.deleteSpace();
+        space.createProject();
     })
 })

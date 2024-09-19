@@ -7,8 +7,8 @@ setup_after_each();
 setup_after_all();
 
 describe('Editar campaña', () => {
-    it ('Verificar el envio de mensajes al asignado de la tarea en la campaña',()=>{
+    it ('Verificar la busqueda del presupuesto',()=>{
         const campaign=new Campaign();
-        campaign.editTaskCampaign();
+        campaign.searchBudget();
     })
 })
