@@ -207,7 +207,7 @@ class Space {
         cy.wait(3000)
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
-        cy.contains('span.status-button__text', 'Nuevo').click();
+        cy.contains('span.status-button__text').contains(/^Nuev[oa]$/).click();
         cy.contains('Planificado').click();
     }
 
@@ -217,7 +217,7 @@ class Space {
         cy.wait(3000)
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
-        cy.contains('span.status-button__text', 'Nuevo').click();
+        cy.contains('span.status-button__text').contains(/^Nuev[oa]$/).click();
         cy.contains('En curso').click();
     }
 
@@ -227,7 +227,7 @@ class Space {
         cy.wait(3000)
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
-        cy.contains('span.status-button__text', 'Nuevo').click();
+        cy.contains('span.status-button__text').contains(/^Nuev[oa]$/).click();
         cy.contains('En revisión').click();
     }
 
@@ -237,7 +237,7 @@ class Space {
         cy.wait(3000)
         this.#createTaskForEdit(taskName);
         cy.contains(taskName).click()
-        cy.contains('span.status-button__text', 'Nuevo').click();
+        cy.contains('span.status-button__text').contains(/^Nuev[oa]$/).click();
         cy.contains('Completado').click();
     }
 
