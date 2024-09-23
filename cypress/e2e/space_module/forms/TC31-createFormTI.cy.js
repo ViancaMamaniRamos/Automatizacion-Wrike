@@ -13,6 +13,6 @@ describe('Edit Space', () => {
         cy.viewport(1280, 720);
 
         const form = new Form();
-        form.createFormRequisitosTI('Sprint 1', 'New York');
+        form.createFormRequisitosTI('Sprint 1', 'Londres');
     })
 })

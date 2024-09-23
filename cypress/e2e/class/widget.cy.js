@@ -1,4 +1,4 @@
-class Space {
+class Widget {
 
     constructor() {
     }
@@ -55,7 +55,7 @@ class Space {
             .click({ force: true });
         cy.contains('button', 'Widget')
             .click();
-        cy.contains('Recuento de projectos')
+        cy.contains('Recuento de proyectos')
             .click();
     }
 
@@ -113,11 +113,6 @@ class Space {
             .click();
     }
 
-    #goToSettingsSpace() {
-        cy.contains('span', 'Ajustes del espacio')
-            .parents('sidebar-item')
-            .click();
-    }
 }
 
-export default Space;
+export default Widget;

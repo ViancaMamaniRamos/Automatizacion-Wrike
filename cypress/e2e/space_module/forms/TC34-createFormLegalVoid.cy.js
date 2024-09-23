@@ -7,12 +7,12 @@ setup_before_each();
 setup_after_each();
 setup_after_all();
 
-describe('Edit Space', () => {
+describe('Formularios legales', () => {
 
-    it('Edit Space', () => {
+    it('TC34-Verificar la validadcion de un formulario vacio', () => {
         cy.viewport(1280, 720);
 
         const form = new Form();
-        form.createFormLegal('Sprint 1', ' ');
+        form.createFormLegalVoid();
     })
 })

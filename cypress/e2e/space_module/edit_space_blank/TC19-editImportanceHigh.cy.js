@@ -7,12 +7,12 @@ setup_before_each();
 setup_after_each();
 setup_after_all();
 
-describe('Edit Space', () => {
+describe('Delete Space', () => {
 
-    it('Edit Space', () => {
+    it('Delete Space', () => {
         cy.viewport(1280, 720);
 
         const space = new Space();
-        space.createTask('Sprint 1', ' ');
+        space.editTaskImportance('Sprint 1','Alta','Task eight')
     })
 })

@@ -4,8 +4,8 @@ class Space {
     }
 
     createNewSpace(spaceOption) {
-        cy.get('button[data-onboarding="sidebar-context-switcher"]').click();
-        cy.contains('a.context-selector-menu-item__link', 'Espacio').click();
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Espacio').click({ force: true });
         cy.contains('h4.template-item__title', spaceOption)
             .parents('template-item')
             .find('button.template-item__preview-button')
@@ -13,10 +13,10 @@ class Space {
     }
 
     changeViewSpace(option) {
-        cy.get('button[aria-label="Más opciones"]').click();
+        cy.get('button[aria-label="Más opciones"]').click({ force: true });
         cy.contains('wrike-text-card-v2', option)
             .parents('wrike-list-v2-item')
-            .click();
+            .click({ force: true });
 
     }
 
@@ -31,7 +31,15 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
+            .last().click();
+        this.#goToSettingsSpace();
+        cy.get('input[placeholder="Introduce el nombre del espacio"]')
+            .clear()
+            .type('Automation');
+        cy.contains('button', 'Guardar')
             .click();
+        cy.get('button[aria-label="Cerrar"]')
+            .last().click();
     }
 
     editNewSpaceNameVoid() {
@@ -41,7 +49,7 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
     editNewSpaceTypeProject(typeProject) {
@@ -52,7 +60,15 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
+            .last().click();
+        this.#goToSettingsSpace();
+        cy.get('input[placeholder="Nombre del tipo de proyecto"]')
+            .clear()
+            .type('Proyecto');
+        cy.contains('button', 'Guardar')
             .click();
+        cy.get('button[aria-label="Cerrar"]')
+            .last().click();
     }
 
     editNewSpaceTypeProjectVoid() {
@@ -62,7 +78,7 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
     editNewSpaceTypeTask(typeTask) {
@@ -73,7 +89,16 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
+            .last().click();
+        cy.wait(2000)
+        this.#goToSettingsSpace();
+        cy.get('input[placeholder="Nombre del tipo de tarea"]')
+            .clear()
+            .type('Tarea');
+        cy.contains('button', 'Guardar')
             .click();
+        cy.get('button[aria-label="Cerrar"]')
+            .last().click();
     }
 
     editNewSpaceTypeTaskVoid() {
@@ -83,10 +108,10 @@ class Space {
         cy.contains('button', 'Guardar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
-    editNewSpaceCancel(typeProject, typeTask){
+    editNewSpaceCancel(typeProject, typeTask) {
         this.#goToSettingsSpace();
         cy.get('input[placeholder="Nombre del tipo de proyecto"]')
             .clear()
@@ -97,10 +122,13 @@ class Space {
         cy.contains('button', 'Cancelar')
             .click();
         cy.get('button[aria-label="Cerrar"]')
-            .click();
+            .last().click();
     }
 
-    deleteSpace() {
+    deleteSpace(nameSpace) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', nameSpace).click({ force: true });
+        cy.wait(3000)
         this.#goToSettingsSpace();
         cy.contains('button', 'Eliminar espacio')
             .click();
@@ -120,7 +148,7 @@ class Space {
     createTask(projectName, taskName) {
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         cy.get('button[aria-label="Crear nuevo"]')
             .click();
         cy.contains('span.template-card__info-main', 'Tarea')
@@ -133,85 +161,127 @@ class Space {
             .click();
     }
 
-    createTaskCancel(projectName, taskName){
+    createTaskVoid(projectName, taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
+            .click({force:true});
         cy.get('button[aria-label="Crear nuevo"]')
             .click();
         cy.contains('span.template-card__info-main', 'Tarea')
             .click();
         cy.get('input[data-tsid="text-input"]').type(taskName);
+        cy.contains('button', 'Añadir y abrir').click();
+    }
+
+    createTaskCancel(projectName, taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
+        cy.contains('span.tree-item-name__button-text', projectName)
+            .parents('folder-tree-node')
+            .click({force:true});
+        cy.get('button[aria-label="Crear nuevo"]')
+            .click();
+        cy.get('.template-card__content .template-card__info-main span')
+            .first().click();
+        cy.get('input[data-tsid="text-input"]').type(taskName);
         cy.contains('button', 'Cancelar').click();
     }
 
-    editTask(projectName, taskName) {
+    editTask(projectName,taskCreate , taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
-        cy.contains('Task one').click()
+            .click({force:true});
+        cy.wait(3000)
+        this.#createTaskForEdit(taskCreate);
+        cy.contains(taskCreate).first().click()
         cy.get('textarea[aria-label="Título del elemento, Task one"]').clear().type(taskName);
     }
 
-    editTaskPlanified(projectName) {
-        cy.contains('span.tree-item-name__button-text', projectName)
-            .parents('folder-tree-node')
-            .click();
-        cy.contains('Task one').click()
-        cy.contains('span.status-button__text','Nuevo').click();
+    editTaskPlanified(taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
+        cy.wait(3000)
+        this.#createTaskForEdit(taskName);
+        cy.contains(taskName).click()
+        cy.get('.status-button').click();
         cy.contains('Planificado').click();
     }
 
-    editTaskInCourse(projectName){
-        cy.contains('span.tree-item-name__button-text', projectName)
-            .parents('folder-tree-node')
-            .click();
-        cy.contains('Task one').click()
-        cy.contains('span.status-button__text','Nuevo').click();
+    editTaskInCourse(taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
+        cy.wait(3000)
+        this.#createTaskForEdit(taskName);
+        cy.contains(taskName).click()
+        cy.get('.status-button').click();
         cy.contains('En curso').click();
     }
 
-    editTaskInRevision(projectName){
-        cy.contains('span.tree-item-name__button-text', projectName)
-            .parents('folder-tree-node')
-            .click();
-        cy.contains('Task one').click()
-        cy.contains('span.status-button__text','Nuevo').click();
+    editTaskInRevision(taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
+        cy.wait(3000)
+        this.#createTaskForEdit(taskName);
+        cy.contains(taskName).click()
+        cy.get('.status-button').click();
         cy.contains('En revisión').click();
     }
 
-    editTaskCompleted(projectName){
-        cy.contains('span.tree-item-name__button-text', projectName)
-            .parents('folder-tree-node')
-            .click();
-        cy.contains('Task one').click()
-        cy.contains('span.status-button__text','Nuevo').click();
+    editTaskCompleted(taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
+        cy.wait(3000)
+        this.#createTaskForEdit(taskName);
+        cy.contains(taskName).click()
+        cy.get('.status-button').click();
+        //cy.contains('span.status-button__text').contains(/^Nuev[oa]$/).click();
         cy.contains('Completado').click();
     }
 
-    editTaskLevelA(projectName){
+    deleteAllTasks(projectName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
-        cy.contains('Task one').click()
-        cy.get('button[aria-label="Mostrar más campos"]').click()
-        cy.get('#b957ea0a-760c-4df0-9686-536477614e75').click()
-        cy.contains('A').click()
+            .click({force:true});
+        cy.get('input[aria-label="Seleccionar todos los elementos de la tabla"]').check();
+        cy.get('button[aria-label="Eliminar"]').click();
     }
 
-    editTaskImportance(projectName, importance) {
+    editTaskImportance(projectName, importance, taskName) {
+        cy.get('button[data-onboarding="sidebar-context-switcher"]').click({ force: true });
+        cy.contains('a.context-selector-menu-item__link', 'Automation').first().click({ force: true });
         cy.contains('span.tree-item-name__button-text', projectName)
             .parents('folder-tree-node')
-            .click();
-        cy.contains('Task one').click()
+            .click({force:true});
+        this.#createTaskForEdit(taskName);
+        cy.contains(taskName).click()
         cy.get('button[aria-label="Mostrar más campos"]').click()
-        cy.get('#ca381cff-1eaf-4950-9a9e-769068d9a5b0').click()
-        cy.contains(importance).click()
+        cy.contains('span', 'Normal').click();
+        cy.contains('span',importance).click()
+        cy.get('button[aria-label="Mostrar menos campos"]').click()
     }
 
-    #goToSettingsSpace () {
+    #goToSettingsSpace() {
         cy.contains('span', 'Ajustes del espacio')
-            .parents('sidebar-item')
+            //.parents('sidebar-item')
+            .click({ force: true });
+    }
+
+    #createTaskForEdit(taskName) {
+        cy.get('button[aria-label="Crear nuevo"]')
+            .click();
+        cy.contains('span.template-card__info-main', 'Tarea')
+            .click();
+        cy.get('input[data-tsid="text-input"]').type(taskName);
+        cy.contains('button', 'Añadir y abrir').click();
+        cy.contains('.title__ghost', taskName)
+            .parents('.work-item-header__main')
+            .find('button[data-application="close-button"]')
             .click();
     }
 }
