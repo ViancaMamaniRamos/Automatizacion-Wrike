@@ -1,6 +1,6 @@
 export class User {
-    static USER = 'patitotesting@gmail.com';
-    static PASSWORD = '@dmin123';
+    static USER = '201800527@est.umss.edu';
+    static PASSWORD = 'vimara2604';
 }
 
 export class OptionCreateSpace {

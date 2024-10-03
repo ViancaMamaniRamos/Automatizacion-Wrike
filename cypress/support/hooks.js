@@ -5,7 +5,12 @@ export function setup_before_all() {
 
 export function setup_before_each() {
     beforeEach(() => {
-        cy.login()
+        cy.session('login', () => {
+            cy.login()
+        }, {
+            cacheAcrossSpecs: true
+          })
+        cy.visit("https://www.wrike.com/workspace.htm?acc=6616278&wr=26#inbox")
     });
 }
 

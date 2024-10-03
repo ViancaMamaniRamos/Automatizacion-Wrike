@@ -32,5 +32,5 @@ Cypress.Commands.add('login', () => {
     cy.visit(GlobalConstants.MY_DOMAIN_LOGIN);
     const login = new Login(User.USER, User.PASSWORD);
     login.login();
-    //login.closeWindow();
+    cy.url().should('include', '/workspace')
 });

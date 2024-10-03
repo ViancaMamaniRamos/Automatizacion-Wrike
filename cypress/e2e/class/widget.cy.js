@@ -7,20 +7,20 @@ class Widget {
         cy.contains('a', 'Panel de control')
             .click({ force: true });
         cy.contains('button', 'Widget')
-            .click();
+            .click({ force: true });
         cy.contains('Widget personalizado')
-            .click();
+            .click({ force: true });
         cy.contains('Crear widget')
-            .click();
+            .click({ force: true });
     }
 
     createWidgetMyTask() {
         cy.contains('a', 'Panel de control')
             .click({ force: true });
         cy.contains('button', 'Widget')
-            .click();
+            .click({ force: true });
         cy.contains('Mis tareas')
-            .click();
+            .click({ force: true });
     }
 
     createWidgetMyWeekTask() {
@@ -45,72 +45,72 @@ class Widget {
         cy.contains('a', 'Panel de control')
             .click({ force: true });
         cy.contains('button', 'Widget')
-            .click();
+            .click({ force: true });
         cy.contains('Lista de proyectos')
-            .click();
+            .click({ force: true });
     }
 
     createWidgetReccountProjects() {
         cy.contains('a', 'Panel de control')
             .click({ force: true });
         cy.contains('button', 'Widget')
-            .click();
+            .click({ force: true });
         cy.contains('Recuento de proyectos')
-            .click();
+            .click({ force: true });
     }
 
     createWidgetReccountTasks() {
         cy.contains('a', 'Panel de control')
             .click({ force: true });
         cy.contains('button', 'Widget')
-            .click();
+            .click({ force: true });
         cy.contains('Recuento de tareas')
-            .click();
+            .click({ force: true });
     }
 
     createWidgetProgress() {
         cy.contains('a', 'Panel de control')
             .click({ force: true });
         cy.contains('button', 'Widget')
-            .click();
+            .click({ force: true });
         cy.contains('Progreso')
-            .click();
+            .click({ force: true });
     }
 
     createWidgetStatusProject() {
         cy.contains('a', 'Panel de control')
             .click({ force: true });
         cy.contains('button', 'Widget')
-            .click();
+            .click({ force: true });
         cy.contains('Proyectos por estado')
-            .click();
+            .click({ force: true });
     }
 
     createWidgetStatusTasks() {
         cy.contains('a', 'Panel de control')
             .click({ force: true });
         cy.contains('button', 'Widget')
-            .click();
+            .click({ force: true });
         cy.contains('Tareas por estado')
-            .click();
+            .click({ force: true });
     }
 
     createWidgetAssignedTasks() {
         cy.contains('a', 'Panel de control')
             .click({ force: true });
         cy.contains('button', 'Widget')
-            .click();
+            .click({ force: true });
         cy.contains('Tareas por asignado')
-            .click();
+            .click({ force: true });
     }
 
     createWidgetBurndown() {
         cy.contains('a', 'Panel de control')
             .click({ force: true });
         cy.contains('button', 'Widget')
-            .click();
+            .click({ force: true });
         cy.contains('Diagrama burndown por finalización de la tarea')
-            .click();
+            .click({ force: true });
     }
 
 }

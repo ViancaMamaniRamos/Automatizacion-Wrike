@@ -9,31 +9,31 @@ setup_after_all();
 
 describe('Cambio de color', () => {
 
-    it('Verificar agregar un estado nuevo', () => {
+    it('Verificar agregar un estado (completado) nuevo', () => {
         cy.viewport(1280, 720);
 
         const spaceSettings = new SpaceSettings();
         spaceSettings.changeFlowNewCompleted();
     })
-    it('Verificar editar el color del estado nuevo', () => {
+    it('Verificar editar el color del estado (completado) nuevo', () => {
         cy.viewport(1280, 720);
 
         const spaceSettings = new SpaceSettings();
         spaceSettings.changeFlowColorCompleted();
     })
-    it('Verificar editar el nombre del estado nuevo', () => {
+    it('Verificar editar el nombre del estado (completado) nuevo', () => {
         cy.viewport(1280, 720);
 
         const spaceSettings = new SpaceSettings();
         spaceSettings.changeFlowEditNameCompleted();
     })
-    it('Verificar eliminar el estado nuevo creado', () => {
+    it('Verificar deshacer el eliminado del estado (completado) nuevo creado', () => {
         cy.viewport(1280, 720);
 
         const spaceSettings = new SpaceSettings();
         spaceSettings.changeFlowDeleteCompletedUndo();
     })
-    it('Verificar eliminar el estado nuevo creado', () => {
+    it('Verificar eliminar el estado (completado) nuevo creado', () => {
         cy.viewport(1280, 720);
 
         const spaceSettings = new SpaceSettings();
